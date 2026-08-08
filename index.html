@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Microplastic Checker</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>Microplastic Checker</h1>
+    <p class="tagline">Check everyday snacks &amp; items for plastic packaging risk — educational estimates from packaging data, not lab tests.</p>
+  </header>
+
+  <main>
+    <section class="panel search-panel layout-search" aria-labelledby="search-heading">
+      <h2 id="search-heading">What are you checking?</h2>
+
+      <form id="check-form" novalidate>
+        <label for="item-input">Item name</label>
+        <input
+          id="item-input"
+          name="item"
+          type="text"
+          placeholder="e.g. potato chips, fresh apple, water bottle"
+          autocomplete="off"
+          required
+        />
+
+        <label for="image-input">Optional photo <span class="muted">(saved locally only — recognition coming later)</span></label>
+        <input id="image-input" name="image" type="file" accept="image/*" />
+        <p id="image-preview-name" class="muted" hidden></p>
+
+        <div class="actions">
+          <button type="submit" id="check-btn">Check item</button>
+          <button type="button" id="clear-btn" class="secondary">Clear</button>
+        </div>
+      </form>
+
+      <div class="examples">
+        <p class="examples-label">Try an example:</p>
+        <div class="example-buttons" role="group" aria-label="Example items">
+          <button type="button" class="example-btn" data-example="fresh apple">Fresh apple</button>
+          <button type="button" class="example-btn" data-example="potato chips">Potato chips</button>
+          <button type="button" class="example-btn" data-example="plastic water bottle">Plastic water bottle</button>
+          <button type="button" class="example-btn" data-example="polyester t-shirt">Polyester t-shirt</button>
+        </div>
+      </div>
+
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+      <p id="rate-note" class="muted rate-note">Educational estimates from packaging and food data — not a lab test. Results appear after you press Check.</p>
+    </section>
+
+    <section id="candidates" class="panel candidates-panel layout-search" hidden aria-labelledby="candidates-heading">
+      <h2 id="candidates-heading">Select a match</h2>
+      <p class="muted">Several matching products were found. Pick one, or continue with a general estimate.</p>
+      <ul id="candidate-list" class="candidate-list"></ul>
+      <button type="button" id="use-local-btn" class="secondary">Use a general estimate instead</button>
+    </section>
+
+    <section id="results" class="panel results-panel" hidden aria-labelledby="results-heading">
+      <h2 id="results-heading">
+        Information overview
+        <span class="results-kicker">Microplastics · food quality · Green Score · packaging log</span>
+      </h2>
+      <div id="report"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Food product details courtesy of <a href="https://world.openfoodfacts.org" target="_blank" rel="noopener">Open Food Facts</a> (when available). Microplastic guidance on this site is educational and based on packaging rules — not laboratory testing.</p>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
